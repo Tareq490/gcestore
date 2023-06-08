@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
  
@@ -59,13 +59,35 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25),
                       ),
+
+                    SizedBox(
+                      height: 100, width: 20,
+                    ),
+
                       TextFormField(
                         textAlign: TextAlign.center,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                             fillColor: Colors.transparent,
-                            labelText: 'Username'),
+                            labelText: 'Email'),
+                                                       
+                      ),
+                      TextFormField(
+                        textAlign: TextAlign.center,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            fillColor: Colors.transparent,
+                            labelText: 'Password',
                             
-                            
+                          suffixIcon: IconButton(
+                                icon: Icon(_isObscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                })),  
                       )
                     ],
                   ))),
