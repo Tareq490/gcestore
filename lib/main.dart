@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'RegisterUser.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
       
       theme: ThemeData(
      
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'GCE Store'),
@@ -87,11 +90,55 @@ bool _isObscure = true;
                                   setState(() {
                                     _isObscure = !_isObscure;
                                   });
-                                })),  
-                      )
-                    ],
-                  ))),
-            )
+                                }
+                                )
+                                ),  
+                      ),
+
+                      SizedBox(
+                      height: 50, width: 20,
+                    ),
+                    
+                
+                             ElevatedButton(
+                             style: ElevatedButton.styleFrom(
+                              maximumSize: Size(
+                                MediaQuery.of(context).size.height * .20,
+                                MediaQuery.of(context).size.width * .12,
+                              ),
+                              minimumSize: Size(
+                                MediaQuery.of(context).size.height * .20,
+                                MediaQuery.of(context).size.width * .12,
+                              ),
+                              primary: Colors.lightGreen,
+                              shape: const StadiumBorder()),
+                              onPressed:() async 
+                              {Navigator.
+                              push(context, MaterialPageRoute(builder: (context) => RegisterUserSc(),  
+                              ));},
+
+
+
+                               child: Row( 
+                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children:[
+                                        Text(
+                                        "Login",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                Icon(
+                                  Icons.how_to_reg,
+                                  color: Colors.white,
+                                )
+                                ]
+                                ),
+                  
+                ),
+              ])),
+            ))
           ],
         ));
   }
