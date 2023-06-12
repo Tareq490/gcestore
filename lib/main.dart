@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gcestore/HomeScreen.dart';
+import 'package:gcestore/RegisterUser.dart';
 
-import 'RegisterUser.dart';
+import 'RegisterStore.dart';
 
 void main() {
   runApp(const MyApp());
@@ -114,7 +116,7 @@ bool _isObscure = true;
                               shape: const StadiumBorder()),
                               onPressed:() async 
                               {Navigator.
-                              push(context, MaterialPageRoute(builder: (context) => RegisterUserSc(),  
+                              push(context, MaterialPageRoute(builder: (context) => HomeScreen(),  
                               ));},
 
 
@@ -137,6 +139,36 @@ bool _isObscure = true;
                                 ),
                   
                 ),
+
+                SizedBox(
+                      height: 25, width: 20,
+                    ),
+
+
+                TextButton(
+                    child: Text(
+                      "Register as User",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterUserSc(),
+                          ));
+                    }),
+                TextButton(
+                    child: Text(
+                      "Register as Store",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterStoreSc(),
+                                                ));
+                    }),
               ])),
             ))
           ],
