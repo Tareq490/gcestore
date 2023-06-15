@@ -82,6 +82,7 @@ bool _isObscure = true;
                         obscureText: true,
                         decoration: InputDecoration(
                             fillColor: Colors.transparent,
+                            
                             labelText: 'Password',
                             
                           suffixIcon: IconButton(

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gcestore/AddPostScreen.dart';
-import 'package:gcestore/profilescreen.dart';
+import 'package:gcestore/profileheader.dart';
+
+import 'HomeScreen.dart';
 import 'HomeSide.dart';
 
-class HomeScreen extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
+  ProfileScreen({super.key});
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ProfileScreen> createState() => _ProfileScreen();
 }
 
-
-class _HomeScreenState extends State<HomeScreen> {
-  var roleId = 1;
+class _ProfileScreen extends State<ProfileScreen> {
+  var roleID = 1;
   int _selectedIndex = 0;
 
   void showHome(BuildContext context) {
@@ -60,30 +62,34 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
-          body: Column(
-            children: [
-              Text(
-                'Stories',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
-              SizedBox(
-                height: 100,
-                width: 15,
-              ),
-              Text(
-                'Categories',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
-            ],
-          ),
-//bottomNavigationBar: convex,
-
+          body: DefaultTabController(
+              length: 1,
+              child: NestedScrollView(
+                  headerSliverBuilder: (context, index) {
+                    return [
+                      profileheader(),
+                    ];
+                  },
+                  body: SafeArea(
+                    child: Column(
+                      children: <Widget>[
+                        Material(
+                          color: Colors.white,
+                          child: TabBar(
+                            labelColor: Colors.black,
+                            indicatorWeight:
+                                MediaQuery.of(context).size.height * .002,
+                            tabs: [
+                              Tab(
+                                icon: Icon(Icons.grid_on_sharp,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ))),
           bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -93,14 +99,15 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.camera),
                 label: "",
+                // label: Icon(Icons.camera),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.face),
-                label: 'profile',
+                icon: Icon(Icons.face_5_sharp),
+                label: 'Profile',
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.amber[800],
+            selectedItemColor: Color.fromARGB(255, 69, 177, 189),
             onTap: _onItemTapped,
           )),
     );
